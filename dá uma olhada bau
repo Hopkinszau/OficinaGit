@@ -1,0 +1,43 @@
+from random import randint
+
+def rolar_dados():
+    dados = randint(1,6)+randint(1,6)
+    return dados
+
+def validacao(dados):
+    if dados == 7 or dados == 11:
+        print("PARABÉNS, VOCÊ VENCEU!")
+    elif dados == 2 or dados == 3 or dados == 12:
+        print("CRAPS!!! VOCÊ PERDEU...")
+    else:
+        aux = dados
+        input("PONTO! AGORA ROLE OS DADOS ATÉ TIRAR ESTE MESMO NÚMERO.")
+        dados = rolar_dados()
+        print("O RESULTADO DO SEU ROLAMENTO É:",dados,"\n")
+        
+        if aux == dados:
+            print("PARABÉNS! VOCÊ VENCEU!")
+        elif dados == 7:
+            print("QUE PENA! VOCÊ TIROU 7 E PERDEU...")
+        else:
+            pontuacao(aux)    
+
+def pontuacao(aux):
+    input("ROLE NOVAMENTE!\n")
+    dados = rolar_dados()
+    print("O RESULTADO DE SEU ROLAMENTO É: ",dados,"\n")
+    if dados == aux:
+        print("PARABÉNS, VOCÊ GANHOU!")
+    elif dados == 7:
+        print("QUE PENA! VOCÊ TIROU 7 E PERDEU...")
+    else:
+        pontuacao(aux)
+
+def main():
+    dados = rolar_dados()
+    input("SEJA BEM VINDO AO CRAPS, TECLE ENTER PARA ROLAR OS DADOS.")
+    print("O RESULTADO DE SEU ROLAMENTO É: ",dados,"\n")
+    validacao(dados)
+
+if __name__ == '__main__':
+  main()
